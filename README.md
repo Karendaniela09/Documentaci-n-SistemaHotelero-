@@ -98,42 +98,113 @@ Registro de la migración en:
 Validación de ejecución correcta después del dominio de seguridad.
 Preparación y revisión del Pull Request antes del merge a la rama principal.
 
-
-
-
-
-
-
-
-
-
-
-👨‍💻 José Amaya
-Rol: Desarrollo de Lógica de Negocio y Backend
-
-Gestión de Habitaciones: Desarrolló la lógica para la asignación y cambio de estado (disponible/ocupada) de las habitaciones.
-
-Seguridad: Implementó los módulos de autenticación y validación de usuarios.
-
-Integración de API: Responsable de conectar los servicios del servidor con la interfaz de usuario.
-
 👨‍💻 Johan Acero
-Rol: Arquitectura de Datos y Control de Flujo
+HU-04. Subir dominio de distribución
+Descripción
 
-Diseño de Base de Datos: Creó el modelo entidad-relación para gestionar huéspedes, reservas y pagos.
+Se encargó de desarrollar y subir el script DDL correspondiente al dominio de distribución del sistema, permitiendo versionar y ejecutar las tablas relacionadas con sedes, habitaciones, estados y tarifas dentro del ambiente compartido.
 
-Consultas y Optimización: Desarrolló los procedimientos para la búsqueda rápida de disponibilidad por fechas.
+Actividades realizadas
+Creación del archivo:
+01_ddl/03_tables/003-create-domain-distribution.sql
+Desarrollo de las tablas:
+sede
+tipo_habitacion
+estado_habitacion
+habitacion
+tarifa
+Configuración de relaciones mediante claves foráneas (FK).
+Implementación de relación:
+sede → empresa
+Configuración de restricciones:
+UNIQUE (company_id, name) en sede
+UNIQUE (branch_id, room_number) en habitacion
+Implementación de validaciones:
+CHECK (capacity > 0) en habitacion
+CHECK (amount > 0) en tarifa
+Configuración de referencias en:
+tarifa → tipo_habitacion
+tarifa → tipo_dia
+Registro de la migración en:
+01_ddl/03_tables/0000changelog.yaml
+Validación de ejecución correcta después del dominio de parametrización.
+Preparación y revisión del Pull Request antes del merge a la rama principal.
 
-Reportes: Implementó la generación de informes básicos de ocupación hotelera.
+👨‍💻 Karen Holguín
+HU-05. Subir dominio de inventario
+Descripción
 
-👩‍💻 Karen Holguín
-Rol: Gestión de Procesos y Calidad
+Se encargó de desarrollar y subir el script DDL correspondiente al dominio de inventario del sistema, permitiendo versionar y ejecutar las tablas relacionadas con proveedores, productos, servicios y movimientos de inventario dentro del ambiente compartido.
 
-Módulo de Reservas: Desarrolló el flujo completo desde la selección de habitación hasta la confirmación de la estancia.
+Actividades realizadas
+Creación del archivo:
+01_ddl/03_tables/004-create-domain-inventory.sql
+Desarrollo de las tablas:
+proveedor
+producto
+servicio
+movimiento_producto
+disponibilidad_inventario
+Configuración de relaciones mediante claves foráneas (FK) hacia dominios anteriores:
+Parametrización
+Distribución
+Implementación de campos de auditoría en todas las tablas:
+created_by
+created_at
+updated_by
+updated_at
+deleted_by
+deleted_at
+status
+Validación de integridad y relaciones del modelo de inventario.
+Registro de la migración en:
+01_ddl/03_tables/0000changelog.yaml
+Validación de ejecución correcta después del dominio de distribución.
+Preparación y revisión del Pull Request antes del merge a la rama principal.
 
-Pruebas de Usuario: Encargada de identificar errores en los procesos de registro y asegurar la calidad del software.
+👨‍💻 Valery Sinaí
+HU-06. Subir dominio de prestación de servicio
+Descripción
 
-Gestión de Trello: Mantiene la organización de las tarjetas y el seguimiento de los "Sprints" en el tablero del proyecto.
+Se encargó de desarrollar y subir el script DDL correspondiente al dominio de prestación de servicio del sistema, permitiendo versionar y ejecutar las tablas relacionadas con reservas, estadías, check-in/check-out y consumos dentro del ambiente compartido.
+
+Actividades realizadas
+Creación del archivo:
+01_ddl/03_tables/005-create-domain-service.sql
+Desarrollo de las tablas:
+reserva_habitacion
+cancelacion_habitacion
+disponibilidad_habitacion
+catalogo_habitacion
+estadia
+check_in
+check_out
+venta_producto
+venta_servicio
+Configuración de relaciones mediante claves foráneas (FK) hacia los dominios:
+Distribución
+Parametrización
+Inventario
+Implementación de campos de auditoría en todas las tablas:
+created_by
+created_at
+updated_by
+updated_at
+deleted_by
+deleted_at
+status
+Validación de integridad y relaciones del dominio de prestación de servicio.
+Registro de la migración en:
+01_ddl/03_tables/0000changelog.yaml
+Validación de ejecución correcta después del dominio de inventario.
+Preparación y revisión del Pull Request antes del merge a la rama principal.
+
+
+
+
+
+
+
 
 # Estado Actual del Proyecto
 Actualmente, el equipo ha completado las siguientes fases:
