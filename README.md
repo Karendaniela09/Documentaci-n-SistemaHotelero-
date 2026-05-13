@@ -6,11 +6,6 @@ A continuación se detalla la contribución y las tareas específicas que cada i
 
 👥 Trabajo Grupal — Equipo Completo
 HU-01. Estructura de carpetas de la base de datos
-Integrantes participantes:
-Karen Holguín
-Valery Sinaí
-José Amaya
-Johan Acero
 Descripción:
 
 Como equipo, se organizó la estructura de carpetas de la base de datos con el objetivo de separar migraciones, semillas, consultas de prueba y documentación técnica, permitiendo que cualquier integrante pudiera ubicar y ejecutar los archivos SQL sin confusiones.
@@ -354,12 +349,7 @@ Preparación y revisión del Pull Request antes del merge a la rama principal.
 
 👥 Trabajo Grupal — Equipo Completo
 HU-12. Crear vistas, funciones, procedimientos, triggers e índices de prueba por dominio
-Integrantes participantes
-Karen Holguín
-Valery Sinaí
-José Amaya
-Johan Acero
-Descripción
+Descripción: 
 
 Como equipo, se desarrollaron objetos avanzados de base de datos para cada dominio del sistema, permitiendo implementar lógica de negocio reutilizable, automatización de procesos y optimización del acceso a la información mediante vistas, funciones, procedimientos almacenados, triggers e índices.
 
@@ -389,6 +379,164 @@ Procedimientos almacenados
 Triggers
 Índices
 
+👥 Trabajo Grupal — Equipo Completo
+HU-13 Validar llaves y checks
+Descripción:
+
+Como equipo, se realizaron pruebas de validación sobre las restricciones de integridad de la base de datos con el objetivo de garantizar el correcto funcionamiento de las llaves foráneas, restricciones UNIQUE y validaciones CHECK antes de la revisión final del proyecto.
+
+Actividades realizadas
+Creación de scripts de validación de integridad para los diferentes dominios del sistema.
+Ejecución de pruebas para validar:
+Llaves foráneas (FK)
+Restricciones UNIQUE
+Restricciones CHECK
+Validación de errores esperados al intentar:
+Insertar registros sin relaciones válidas.
+Duplicar registros en tablas puente.
+Insertar valores inválidos en campos numéricos.
+Verificación de restricciones:
+amount > 0
+capacity > 0
+points >= 0
+Confirmación de que el motor de base de datos genera errores correctamente ante violaciones de integridad.
+Registro y documentación de resultados:
+PASS para errores esperados correctamente detectados.
+Revisión de índices de soporte para llaves foráneas en tablas con alto volumen estimado.
+Organización de scripts de validación en:
+02_dml/
+docs/
+Actualización de documentación en:
+README.md
+o archivos dedicados de validación.
+Validación grupal del correcto funcionamiento de restricciones e integridad referencial.
+
+👥 Trabajo Grupal — Equipo Completo
+HU-14 Definir scripts de rollback
+Descripción:
+
+Como equipo, se desarrollaron y validaron los scripts de rollback para los dominios DDL del sistema con el objetivo de permitir la reversión segura y ordenada de las migraciones en caso de fallos o inconsistencias durante el despliegue.
+
+Actividades realizadas
+Creación de scripts de rollback para los 8 dominios DDL del sistema.
+Organización de scripts en:
+05_rollbacks/01_ddl/03_tables/
+Desarrollo de scripts:
+001 a 008 de rollback.
+Implementación de sentencias:
+DROP TABLE IF EXISTS
+Configuración del orden inverso de eliminación de tablas respetando:
+Llaves foráneas (FK)
+Dependencias entre dominios
+Registro de los rollbacks en:
+0000changelog.yaml
+Validación de ejecución correcta de al menos un rollback completo.
+Verificación de eliminación segura de tablas sin errores.
+Pruebas de re-ejecución de migraciones después del rollback para confirmar estabilidad del ambiente.
+Revisión grupal de integridad y consistencia de los scripts de reversión.
+
+👥 Trabajo Grupal — Equipo Completo
+HU-15 Actualizar diccionario de datos
+Descripción:
+
+Como equipo, se actualizó el diccionario de datos del proyecto con el objetivo de documentar completamente el modelo final implementado en la base de datos, incluyendo tablas, columnas, tipos de datos, restricciones y relaciones correspondientes a los 8 dominios del sistema hotelero.
+
+Actividades realizadas
+Documentación completa de las tablas pertenecientes a los 8 dominios del sistema.
+Registro detallado de información por cada tabla:
+Nombre de columnas
+Tipo de dato
+Nulabilidad
+Valores por defecto
+Llaves primarias (PK)
+Llaves foráneas (FK)
+Restricciones UNIQUE
+Restricciones CHECK
+Descripción funcional de negocio
+Documentación de relaciones entre tablas incluyendo:
+Dependencias
+Cardinalidades
+Referencias entre dominios
+Validación de consistencia entre:
+Modelo implementado
+Scripts DDL
+Diccionario de datos
+Verificación de inexistencia de:
+Tablas faltantes
+Columnas fantasma
+Relaciones inconsistentes
+Organización del documento en:
+docs/diccionario-de-datos.md
+o formato .pdf
+Revisión grupal de estructura, claridad y consistencia técnica de la documentación.
+Validación final del diccionario contra la base de datos real del proyecto.
+
+
+👥 Trabajo Grupal — Equipo Completo
+HU-16 Preparar ejecución con Liquibase
+Descripción:
+
+Como equipo, se preparó y validó la configuración de Liquibase con el objetivo de automatizar y organizar correctamente el pipeline de migraciones de la base de datos sobre el ambiente compartido, evitando configuraciones manuales y garantizando estabilidad en las ejecuciones.
+
+Actividades realizadas
+Configuración y actualización del archivo:
+changelog-master.yaml
+Organización de changelogs de dominio en el orden correcto de ejecución.
+Validación de ejecución de migraciones mediante:
+liquibase update
+Pruebas de ejecución desde una base de datos vacía para garantizar funcionamiento completo del pipeline.
+Verificación y corrección de:
+Conflictos de checksum
+Dependencias entre changelogs
+Parametrización de variables de conexión utilizando:
+.env
+.env.example
+Eliminación de credenciales en texto plano para mejorar la seguridad del proyecto.
+Configuración de ejecución de Liquibase mediante:
+Docker
+Variables de entorno
+Documentación de comandos de ejecución y configuración en:
+README.md
+Validación grupal de ejecución correcta en los ambientes de desarrollo.
+
+
+👥 Trabajo Grupal — Equipo Completo
+HU-17 Ejecutar revisión final de base de datos
+Descripción:
+
+Como equipo, se realizó una revisión final integral de la base de datos con el objetivo de validar que todos los dominios, migraciones, datos semilla, configuraciones de Liquibase, scripts de rollback y consultas de prueba funcionaran correctamente antes de la entrega oficial al instructor.
+
+Actividades realizadas
+Ejecución completa del pipeline de Liquibase sobre una base de datos limpia.
+Validación del orden correcto de ejecución de los 8 dominios DDL.
+Verificación de carga correcta de:
+Datos semilla
+Relaciones entre dominios
+Restricciones y validaciones
+Ejecución de consultas de prueba por cada dominio para validar:
+Integridad de datos
+Relaciones FK
+Resultados esperados
+Validación del acceso mediante el:
+Rol de instructor
+Confirmación de permisos de solo lectura para el instructor.
+Revisión y validación del:
+Diccionario de datos
+Modelo real implementado
+Ejecución y prueba de scripts de rollback.
+Verificación de re-ejecución de migraciones después de rollback.
+Actualización del:
+README.md
+Documentación del flujo completo de ejecución:
+Setup
+Migraciones
+Seeds
+Pruebas
+Rollbacks
+Validación del pipeline por al menos dos integrantes en ambientes distintos.
+Registro de checklist o acta final de revisión en:
+docs/
+Revisión final de Pull Requests y resolución de conflictos antes del merge en main.
 
 
 
