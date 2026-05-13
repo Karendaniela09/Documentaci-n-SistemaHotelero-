@@ -1,4 +1,9 @@
 # Sistema Hotelero
+
+## Enlace backlog: https://trello.com/c/hhFy2mGA/40-hu-11-cargar-datos-semilla-operativos
+## Reposiorio db - Sistema Hotelero: github.com/JohanAceroSalazar/Sistema-Hotelero.git 
+
+
 Este proyecto consiste en el desarrollo de una solución integral para la gestión de servicios hoteleros, permitiendo la administración eficiente de reservaciones, huéspedes y disponibilidad de habitaciones.
 
  Equipo de Desarrollo y Responsabilidades
