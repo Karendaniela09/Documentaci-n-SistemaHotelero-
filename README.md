@@ -352,6 +352,43 @@ docker-compose up
 Validación de ejecución de seeds sin errores de migración o FK.
 Preparación y revisión del Pull Request antes del merge a la rama principal.
 
+👥 Trabajo Grupal — Equipo Completo
+HU-12. Crear vistas, funciones, procedimientos, triggers e índices de prueba por dominio
+Integrantes participantes
+Karen Holguín
+Valery Sinaí
+José Amaya
+Johan Acero
+Descripción
+
+Como equipo, se desarrollaron objetos avanzados de base de datos para cada dominio del sistema, permitiendo implementar lógica de negocio reutilizable, automatización de procesos y optimización del acceso a la información mediante vistas, funciones, procedimientos almacenados, triggers e índices.
+
+Actividades realizadas
+Creación de al menos una vista por dominio para consolidar información de múltiples tablas.
+Desarrollo de funciones reutilizables para cálculos y consultas de negocio.
+Implementación de procedimientos almacenados para operaciones transaccionales completas.
+Creación de triggers para automatizar procesos ante eventos:
+INSERT
+UPDATE
+DELETE
+Implementación de índices sobre:
+Claves foráneas (FK)
+Columnas de búsqueda frecuente
+Campos de filtrado
+Validación de funcionamiento correcto utilizando los datos semilla cargados previamente.
+Documentación de cada objeto SQL mediante comentarios explicativos sobre su propósito de negocio.
+Organización y subida de scripts en:
+01_ddl/
+o carpetas equivalentes del proyecto.
+Registro de entradas en los archivos changelog correspondientes.
+Validación grupal de ejecución sin errores en el ambiente completo.
+Objetos desarrollados por dominio
+Vistas SQL
+Funciones SQL
+Procedimientos almacenados
+Triggers
+Índices
+
 
 
 
